@@ -3,7 +3,7 @@
  * AgriExtension
  * File: 	types.php
  * Written: Nguyen Ngoc Duy
- * Date: Sep 18 2015
+ * Date: Sep 20 2015
  -->
  
  
@@ -41,7 +41,7 @@
 		public $meta = ''; // Default: NULL
 	}
 	
-	class Crop_Cat {
+	class Crop_Cat_ {
 		public $id = '';
 		public $crop_category_name = '';
 		public $crop_category_title = '';
@@ -49,7 +49,7 @@
 	}
 	
 	// For Crop type. Used to access crops data
-	class Crop {
+	class Crop_ {
 		public $id = '';
 		public $crop_name = '';
 		public $crop_title = '';
