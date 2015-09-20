@@ -12,21 +12,21 @@
 class Read_ {
 	
 	// TODO: Group type. Return a string what is user's group (Declared in types.php)
-	// Duc
+	// Hai
 	static function user_group($id) {
 		
 		return '';
 	}
 	
-	// TODO: Role type. Return a string what is user's role (Declared in types.php)
-	// Chuong
-	static function user_role($id) {
+	// TODO: Capability types. Return a string what is user's capability (Declared in types.php)
+	// Hai
+	static function capabilities($id) {
 		
 		return '';
 	}
 	
 	// TODO: Get User_ by id
-	// Duc
+	// Hai
 	static function User($id) {
 		$user = new User_();
 		
@@ -34,15 +34,40 @@ class Read_ {
 	}
 	
 	// TODO: Get User_(s) by name. Return users have $string in $name
-	// Duc
+	// Hai
 	static function User_by_name($string) {
 		$users = new array(); // User_ array
 		
 		return $users;
 	}
 	
+	// TODO: Get Crop by id
+	// Chau
+	static function Crop($id) {
+		$crop = new Crop_();
+		
+		return true; // True if success, False if not
+	}
+	
+	// TODO: Get Crop by string in name
+	// This means if a crop has it's name includes a string, then add this crop to the array then return array.
+	// Chau
+	static function Crop($string) {
+		$crop = new array();
+		
+		return true; // True if success, False if not
+	}
+	
+	// TODO: Get Crop Catagory by id
+	// Chau
+	static function Crop_Cat($id) {
+		$crop_cat = new Crop_Cat_();
+		
+		return true; // True if success, False if not
+	}
+	
 	// TODO: Get Article_ by id
-	// Chuong
+	// Duc
 	static function Article($id) {
 		$article = new Article_();
 		
@@ -50,7 +75,7 @@ class Read_ {
 	}
 	
 	// TODO: Get Article_(s) by name. Return articles have $string in $name
-	// Chuong
+	// 
 	static function Article_by_name($string) {
 		$articles = new array(); // Article_ array
 		
@@ -58,7 +83,7 @@ class Read_ {
 	}
 	
 	// TODO: Get Article_(s) by content. Return articles have $string in $content
-	// Chuong
+	// 
 	static function Article_by_content($string) {
 		$articles = new array(); // Article_ array
 		
@@ -66,7 +91,7 @@ class Read_ {
 	}
 	
 	// TODO: Get Catagory_ by id
-	// Chau
+	// Duy
 	static function Catagory($id) {
 		$catagory = new Catagory_();
 		
@@ -74,7 +99,7 @@ class Read_ {
 	}
 	
 	// TODO: Get Files_ by id
-	// Chau
+	// Chuong
 	static function Files($id) {
 		$files = new Files_();
 		

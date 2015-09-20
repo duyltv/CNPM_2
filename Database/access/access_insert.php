@@ -100,14 +100,14 @@ class Insert_ {
 	 * Main functions
 	 */
 	// TODO: Insert user to table
-	// Chau
+	// Hai
 	private function User_Insert($User_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Insert article to table
-	// Chau
+	// Duc
 	private function Article_Insert($Article_Object) {
 		
 		return true; // True if success, False if not
@@ -121,21 +121,21 @@ class Insert_ {
 	}
 	
 	// TODO: Insert crop to table
-	// Duc
+	// Chau
 	private function Crop_Insert($Crop_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Insert catagory to table
-	// Chau
+	// Duy
 	private function Catagory_Insert($Catagory_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Insert file to table
-	// Chau
+	// Chuong
 	private function Files_Insert($Files_Object) {
 		
 		return true; // True if success, False if not

@@ -100,42 +100,42 @@ class Update_ {
 	 * Main functions
 	 */
 	// TODO: Update user to table
-	// Duc
+	// Hai
 	private function User_Update($User_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Update article to table
-	// Chuong
+	// Duc
 	private function Article_Update($Article_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Update crop catagory to table
-	// Hai
+	// Chau
 	private function Crop_Cat_Update($Crop_Cat_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Update crops to table
-	// Chuong
+	// Chau
 	private function Crop_Update($Crop_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Update catagory to table
-	// Chau
+	// Duy
 	private function Catagory_Update($Catagory_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Update file to table
-	// Hai
+	// Chuong
 	private function Files_Update($Files_Object) {
 		
 		return true; // True if success, False if not
