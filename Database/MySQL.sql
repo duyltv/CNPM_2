@@ -50,18 +50,18 @@ create table crop_meta(
 	FOREIGN KEY (crop_id) REFERENCES crops(id)
 );
 
-create table roles(
+create table capabilities(
 	id			varchar(10)		PRIMARY KEY,
 	name		varchar(255)
 );
 
-create table user_role(
+create table user_capability(
 	user_id			varchar(10)	NOT NULL,
-	role_id			varchar(10)	NOT NULL,
+	capability_id	varchar(10)	NOT NULL,
 	
-	CONSTRAINT pk_UR PRIMARY KEY (user_id,role_id),
+	CONSTRAINT pk_UR PRIMARY KEY (user_id,capability_id),
 	FOREIGN KEY (user_id) REFERENCES users(id),
-	FOREIGN KEY (role_id) REFERENCES roles(id)
+	FOREIGN KEY (capability_id) REFERENCES capabilities(id)
 );
 
 create table banned(
@@ -75,7 +75,7 @@ create table banned(
 create table groups(
 	id			varchar(10)		PRIMARY KEY,
 	name		varchar(255)	NOT NULL,
-	roles		varchar(23)
+	capabilities varchar(23)
 );
 
 create table catagories(

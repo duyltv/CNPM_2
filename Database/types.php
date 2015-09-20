@@ -19,7 +19,7 @@
 
 		/* Group type
 		 * Declaration: a 6 characters-size string, which each character is a binary digit. 
-		 * 					+ '1' means this user has roles of the group
+		 * 					+ '1' means this user has permissions of the group
 		 *					+ '0' means this user doesn't have roles of the group
 		 *				Positions of binary digits is exactly the positions of groups ( Declared in RQ(0).txt )
 		 * Example:		'100111' means this user has roles of "Nong dan", "Quan tri", 
@@ -28,15 +28,15 @@
 		public $group = '000001'; // Default: Guess
 		
 		/* Role type
-		 * Declaration: Get roles of this user by calculate from tables. A 23 characters-size 
+		 * Declaration: Get capabilities of this user by calculate from tables. A 23 characters-size 
 						string, which each character is a binary digit. 
-		 * 					+ '1' means this user has permission of this role
-		 *					+ '0' means this user doesn't have permission of this role
+		 * 					+ '1' means this user has permissions of this capability
+		 *					+ '0' means this user doesn't have permissions of this capability
 		 *				Positions of binary digits is exactly the positions of requirements ( Declared in RQ(0).txt )
-		 * Example:		'10010000111000000000000' means this user has roles: "Tim kiem giong cay trong", "Dang thong tin giong cay trong",
+		 * Example:		'10010000111000000000000' means this user has capabilities: "Tim kiem giong cay trong", "Dang thong tin giong cay trong",
 						"Dang khao sat", "Phe duyet bai viet ky thuat nong nghiep", "Them, sua thong tin giong cay trong"
 		 */
-		public $roles = '00000000000000000000111'; // Default: Guess
+		public $capabilities = '00000000000000000000111'; // Default: Guess
 		
 		public $meta = ''; // Default: NULL
 	}
