@@ -25,3 +25,6 @@ With requirements (What have to be done in Functions folder):
 Deadline: 23:00 25 Sep 2015
 
 Contact detail: ngocduy1842@gmail.com or 0995089736 (I don't use facebook most time)
+
+Description:
+1. Specification for database is written in Database/MySQL.xlsx
