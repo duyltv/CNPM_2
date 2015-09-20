@@ -1,15 +1,54 @@
-create database AriName;
+create database AgriName;
 
-USE AriName;
+USE AgriName;
 
 create table users(
-	id			varchar(10)		PRIMARY KEY,
-	name		varchar(255)	NOT NULL,
-	pass		varchar(255)	NOT NULL,
-	appername	varchar(255),
-	banned		BOOLEAN,
-	groups		varchar(6)		NOT NULL,
-	roles		varchar(23)		NOT NULL
+	id							varchar(10)		PRIMARY KEY,
+	user_name					varchar(255)	NOT NULL,
+	user_password				varchar(255)	NOT NULL,
+	role_id						varchar(23)		NOT NULL,
+	first_name					varchar(255)	NOT NULL,
+	last_name					varchar(255)	NOT NULL,
+	user_status					INTEGER
+);
+
+create table user_meta(
+	id							varchar(10)		PRIMARY KEY,
+	user_id						varchar(10)		NOT NULL,
+	meta_key					varchar(255)	NOT NULL,
+	meta_value					varchar(255),
+	
+	FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+create table crop_categories(
+	id							varchar(10)		PRIMARY KEY,
+	crop_category_name			varchar(255)	NOT NULL,
+	crop_category_title			varchar(255) 	NOT NULL,
+	crop_category_parent		varchar(10),
+	
+	FOREIGN KEY (crop_category_parent) REFERENCES crop_categories(id)
+);
+
+create table crops(
+	id							varchar(10) 	PRIMARY KEY,
+	crop_name					varchar(255)	NOT NULL,
+	crop_title					varchar(255)	NOT NULL,
+	crop_description			varchar(255),
+	crop_category				varchar(10)		NOT NULL,
+	crop_status					INTEGER			NOT NULL,
+	crop_author					varchar(10)		NOT NULL,
+	
+	FOREIGN KEY (crop_category) REFERENCES crop_categories(id)
+);
+
+create table crop_meta(
+	id							varchar(10)		PRIMARY KEY,
+	crop_id						varchar(10)		NOT NULL,
+	meta_key					varchar(255)	NOT NULL,
+	meta_value					varchar(255),
+	
+	FOREIGN KEY (crop_id) REFERENCES crops(id)
 );
 
 create table roles(
@@ -17,52 +56,67 @@ create table roles(
 	name		varchar(255)
 );
 
--- Chuong
 create table user_role(
 	user_id			varchar(10)	NOT NULL,
 	role_id			varchar(10)	NOT NULL,
-	CONSTRAINT pk_UR PRIMARY KEY (user_id,role_id)
+	
+	CONSTRAINT pk_UR PRIMARY KEY (user_id,role_id),
+	FOREIGN KEY (user_id) REFERENCES users(id),
+	FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
--- Hai
 create table banned(
 	user_id		varchar(10)		PRIMARY KEY,
 	tfrom		varchar(10)		NOT NULL,
-	tlong		varchar(5)		NOT NULL
+	tlong		varchar(5)		NOT NULL,
+	
+	FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
--- Duc
 create table groups(
 	id			varchar(10)		PRIMARY KEY,
 	name		varchar(255)
 );
 
--- Chau
 create table catagories(
 	id			varchar(10)		PRIMARY KEY,
 	name		varchar(255),
-	parrent_id	varchar(10)
+	parrent_id	varchar(10),
+	
+	FOREIGN KEY (parrent_id) REFERENCES catagories(id)
 );
 
--- Chuong
 create table articles(
 	id			varchar(10)		PRIMARY KEY,
 	catagory_id	varchar(10)		NOT NULL,
-	subject		varchar(255)	NOT NULL,
+	title		varchar(255)	NOT NULL,
 	content		varchar(255),
-	writter_id	varchar(10)		NOT NULL
+	status		integer,
+	writter_id	varchar(10)		NOT NULL,
+	
+	FOREIGN KEY (catagory_id) REFERENCES catagories(id),
+	FOREIGN KEY (writter_id) REFERENCES users(id)
 );
 
--- Hai
+create table article_meta(
+	id			varchar(10)		PRIMARY KEY,
+	article_id	varchar(10)		NOT NULL,
+	meta_key	varchar(255)	NOT NULL,
+	meta_value	varchar(255),
+	
+	FOREIGN KEY (article_id) REFERENCES articles(id)
+);
+
 create table files(
 	id			varchar(10)		PRIMARY KEY,
 	name		varchar(10)		NOT NULL,
 	url			varchar(255)	NOT NULL,
-	type_id		varchar(10)		NOT NULL
+	type_id		varchar(10)		NOT NULL,
+	
+	FOREIGN KEY (type_id) REFERENCES file_types(id)
 );
 
--- Chau
-create table types(
+create table file_types(
 	id			varchar(10)		PRIMARY KEY,
 	name		varchar(10)		NOT NULL
 );

@@ -11,9 +11,10 @@
 	// For User type. Used to access user data
 	class User_ { 
 		public $id = '';
-		public $name = '';  // Username
-		public $pass = '';  // Password
-		public $appearname = '';  // Name that appeared on website
+		public $user_name = '';  // Username
+		public $user_password = '';  // Password
+		public $first_name = '';  // Name that appeared on website
+		public $last_name = '';
 		public $banned = false; // Boolean. If this user is in banned tabble
 
 		/* Group type
@@ -36,6 +37,27 @@
 						"Dang khao sat", "Phe duyet bai viet ky thuat nong nghiep", "Them, sua thong tin giong cay trong"
 		 */
 		public $roles = '00000000000000000000111'; // Default: Guess
+		
+		public $meta = ''; // Default: NULL
+	}
+	
+	class Crop_Cat {
+		public $id = '';
+		public $crop_category_name = '';
+		public $crop_category_title = '';
+		public $crop_category_parent = '';
+	}
+	
+	// For Crop type. Used to access crops data
+	class Crop {
+		public $id = '';
+		public $crop_name = '';
+		public $crop_title = '';
+		public $crop_description = '';
+		public $crop_category = '';
+		public $crop_status = 0;
+		public $crop_author = '';
+		public $meta = ''; // Default: NULL
 	}
 	
 	// For Catagory type. Used to access catagory data
@@ -49,8 +71,9 @@
 	class Article_ {
 		public $id = '';
 		public $catagory_id = ''; // Linked to Catagory.id. This article belongs to this catagory
-		public $subject = '';
+		public $title = '';
 		public $content = '';
+		public $status = 0;
 		public $writter_id = '';  // Linked to User.id
 	}
 	
