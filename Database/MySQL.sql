@@ -6,7 +6,6 @@ create table users(
 	id							varchar(10)		PRIMARY KEY,
 	user_name					varchar(255)	NOT NULL,
 	user_password				varchar(255)	NOT NULL,
-	roles						varchar(23)		NOT NULL,
 	groups						varchar(6)		NOT NULL,
 	first_name					varchar(255)	NOT NULL,
 	last_name					varchar(255)	NOT NULL
@@ -75,7 +74,8 @@ create table banned(
 
 create table groups(
 	id			varchar(10)		PRIMARY KEY,
-	name		varchar(255)
+	name		varchar(255)	NOT NULL,
+	roles		varchar(23)
 );
 
 create table catagories(
