@@ -6,10 +6,10 @@ create table users(
 	id							varchar(10)		PRIMARY KEY,
 	user_name					varchar(255)	NOT NULL,
 	user_password				varchar(255)	NOT NULL,
-	role_id						varchar(23)		NOT NULL,
+	roles						varchar(23)		NOT NULL,
+	groups						varchar(6)		NOT NULL,
 	first_name					varchar(255)	NOT NULL,
-	last_name					varchar(255)	NOT NULL,
-	user_status					INTEGER
+	last_name					varchar(255)	NOT NULL
 );
 
 create table user_meta(
@@ -21,13 +21,13 @@ create table user_meta(
 	FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-create table crop_categories(
+create table crop_catagories(
 	id							varchar(10)		PRIMARY KEY,
-	crop_category_name			varchar(255)	NOT NULL,
-	crop_category_title			varchar(255) 	NOT NULL,
-	crop_category_parent		varchar(10),
+	crop_catagory_name			varchar(255)	NOT NULL,
+	crop_catagory_title			varchar(255) 	NOT NULL,
+	crop_catagory_parent		varchar(10),
 	
-	FOREIGN KEY (crop_category_parent) REFERENCES crop_categories(id)
+	FOREIGN KEY (crop_catagory_parent) REFERENCES crop_catagories(id)
 );
 
 create table crops(
@@ -35,11 +35,11 @@ create table crops(
 	crop_name					varchar(255)	NOT NULL,
 	crop_title					varchar(255)	NOT NULL,
 	crop_description			varchar(255),
-	crop_category				varchar(10)		NOT NULL,
+	crop_catagory				varchar(10)		NOT NULL,
 	crop_status					INTEGER			NOT NULL,
 	crop_author					varchar(10)		NOT NULL,
 	
-	FOREIGN KEY (crop_category) REFERENCES crop_categories(id)
+	FOREIGN KEY (crop_catagory) REFERENCES crop_catagories(id)
 );
 
 create table crop_meta(
@@ -107,6 +107,11 @@ create table article_meta(
 	FOREIGN KEY (article_id) REFERENCES articles(id)
 );
 
+create table file_types(
+	id			varchar(10)		PRIMARY KEY,
+	name		varchar(10)		NOT NULL
+);
+
 create table files(
 	id			varchar(10)		PRIMARY KEY,
 	name		varchar(10)		NOT NULL,
@@ -114,9 +119,4 @@ create table files(
 	type_id		varchar(10)		NOT NULL,
 	
 	FOREIGN KEY (type_id) REFERENCES file_types(id)
-);
-
-create table file_types(
-	id			varchar(10)		PRIMARY KEY,
-	name		varchar(10)		NOT NULL
 );
