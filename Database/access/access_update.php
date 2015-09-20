@@ -100,42 +100,51 @@ class Update_ {
 	 * Main functions
 	 */
 	// TODO: Update user to table
-	// Duc
+	// Hai
 	private function User_Update($User_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Update article to table
-	// Chuong
+	// Duc
 	private function Article_Update($Article_Object) {
-		
+		$sql = "UPDATE articles SET catagory_id=$Article_Object->catagory_id,
+									title=$Article_Object->title
+									content=$Article_Object->content
+									status=$Article_Object->status
+									writter_id=$Article_Object->writter_id WHERE id=$Article_Object->id";
+		if (mysqli_query($DB_Conn, $sql)) {
+		    echo "Record updated successfully";
+		} else {
+		    echo "Error updating record: " . mysqli_error($DB_Conn);
+		}
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Update crop catagory to table
-	// Hai
+	// Chau
 	private function Crop_Cat_Update($Crop_Cat_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Update crops to table
-	// Chuong
+	// Chau
 	private function Crop_Update($Crop_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Update catagory to table
-	// Chau
+	// Duy
 	private function Catagory_Update($Catagory_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Update file to table
-	// Hai
+	// Chuong
 	private function Files_Update($Files_Object) {
 		
 		return true; // True if success, False if not

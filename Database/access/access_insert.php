@@ -100,16 +100,31 @@ class Insert_ {
 	 * Main functions
 	 */
 	// TODO: Insert user to table
-	// Chau
+	// Hai
 	private function User_Insert($User_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Insert article to table
-	// Chau
+	// Duc
 	private function Article_Insert($Article_Object) {
-		
+		$sql = "SELECT id,catagory_id, title, writter_id FROM articles WHERE id =$Article_Object->id ";
+		$result = $DB_Conn->query($sql);
+		if ($result->num_rows > 0) 
+			return false;
+		else{
+			$sql1 = "INSERT INTO articles(id,catagory_id,title,content	,status,writter_id)
+			VALUES ($Article_Object->id,$Article_Object->catagory_id,$Article_Object->title,$Article_Object->content,$Article_Object->status,
+				$Article_Object->writter_id)";
+
+			if ($DB_Conn->query($sql1) === TRUE) {
+			    echo "New record created successfully";
+			} else {
+			    echo "Error: " . $sql1 . "<br>" . $DB_Conn->error;
+			}
+		}
+
 		return true; // True if success, False if not
 	}
 	
@@ -121,21 +136,21 @@ class Insert_ {
 	}
 	
 	// TODO: Insert crop to table
-	// Duc
+	// Chau
 	private function Crop_Insert($Crop_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Insert catagory to table
-	// Chau
+	// Duy
 	private function Catagory_Insert($Catagory_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Insert file to table
-	// Chau
+	// Chuong
 	private function Files_Insert($Files_Object) {
 		
 		return true; // True if success, False if not

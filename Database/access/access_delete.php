@@ -3,7 +3,7 @@
  * AgriExtension
  * File: 	access_delete.php
  * Written: Nguyen Ngoc Duy
- * Date: Sep 18 2015
+ * Date: Sep 20 2015
  -->
  
  
@@ -12,21 +12,42 @@
 class Delete_ {
 	
 	// TODO: Delete User_ by id
-	// Chuong
+	// Hai
 	static function User($id) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Delete Article by id
-	// Chuong
+	// Duc
 	static function Article($id) {
+		$sql = "DELETE FROM articles WHERE id=$id";
+		$result = $DB_Conn->query($sql);
+		if ($DB_Conn->query($sql) === TRUE) {
+		    echo "Record deleted successfully";
+		} else {
+		    echo "Error deleting record: " . $DB_Conn->error;
+		}
+
+		return true; // True if success, False if not
+	}
+	
+	// TODO: Delete Crop by id
+	// Chau
+	static function Crop($id) {
+		
+		return true; // True if success, False if not
+	}
+	
+	// TODO: Delete Crop Catagory by id
+	// Chau
+	static function Crop_Cat($id) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Dlete Catagory by id
-	// Chuong
+	// Duy
 	static function Catagory($id) {
 		
 		return true; // True if success, False if not
