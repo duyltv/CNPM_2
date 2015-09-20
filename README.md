@@ -1,6 +1,4 @@
-/*
- * AgriExtension
- */
+AgriExtension
 
 System run on: Apache2, PHP, MySQL. You have to query Database/MySQL.sql before when you 
 can use system's database. 
