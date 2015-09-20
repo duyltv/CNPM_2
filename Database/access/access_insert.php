@@ -114,14 +114,14 @@ class Insert_ {
 	}
 	
 	// TODO: Insert crop catagory to table
-	//
+	// Chau
 	private function Crop_Cat_Insert($Crop_Cat_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Insert crop to table
-	//
+	// Duc
 	private function Crop_Insert($Crop_Object) {
 		
 		return true; // True if success, False if not

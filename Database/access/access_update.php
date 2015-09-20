@@ -114,14 +114,14 @@ class Update_ {
 	}
 	
 	// TODO: Update crop catagory to table
-	//
+	// Hai
 	private function Crop_Cat_Update($Crop_Cat_Object) {
 		
 		return true; // True if success, False if not
 	}
 	
 	// TODO: Update crops to table
-	//
+	// Chuong
 	private function Crop_Update($Crop_Object) {
 		
 		return true; // True if success, False if not
