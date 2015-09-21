@@ -122,6 +122,7 @@ class Insert_ {
 			    echo "New record created successfully";
 			} else {
 			    echo "Error: " . $sql1 . "<br>" . $DB_Conn->error;
+			    return false;
 			}
 		}
 
@@ -145,8 +146,18 @@ class Insert_ {
 	// TODO: Insert catagory to table
 	// Duy
 	private function Catagory_Insert($Catagory_Object) {
+		$id = $Catagory_Object->id;
+		$name = $Catagory_Object->name;
+		$parrent_id = $Catagory_Object->parrent_id;
 		
-		return true; // True if success, False if not
+		$sql = "SELECT id FROM catagories WHERE id = '".$id"';";
+		$result = $DB_Conn->query($sql);
+		if ($result->num_rows > 0) 
+			return false;
+		
+		$sql = "INSERT INTO catagories VALUES ('".$id."','".$name."','".$parrent_id."')"; // Query string
+		$result = $DB_Conn->query($sql);
+		return $result; // True if success, False if not
 	}
 	
 	// TODO: Insert file to table

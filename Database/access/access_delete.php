@@ -27,8 +27,23 @@ class Delete_ {
 		    echo "Record deleted successfully";
 		} else {
 		    echo "Error deleting record: " . $DB_Conn->error;
+		    return false;
 		}
 
+		return true; // True if success, False if not
+	}
+	
+	// TODO: Delete Crop by id
+	// Chau
+	static function Crop($id) {
+		
+		return true; // True if success, False if not
+	}
+	
+	// TODO: Delete Crop Catagory by id
+	// Chau
+	static function Crop_Cat($id) {
+		
 		return true; // True if success, False if not
 	}
 	
@@ -49,8 +64,10 @@ class Delete_ {
 	// TODO: Dlete Catagory by id
 	// Duy
 	static function Catagory($id) {
+		$sql = "DELETE FROM catagories WHERE id='".$id."';"; // Query string
+		$result = $DB_Conn->query($sql);
 		
-		return true; // True if success, False if not
+		return $result; // True if success, False if not
 	}
 	
 	// TODO: Delete Files by id

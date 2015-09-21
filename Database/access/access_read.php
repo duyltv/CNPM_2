@@ -105,6 +105,15 @@ class Read_ {
 	// Duy
 	static function Catagory($id) {
 		$catagory = new Catagory_();
+		$sql = "SELECT * FROM catagories;";
+		$result = $DB_Conn->query($sql);
+
+		if ($result->num_rows > 0) {
+			$row = $result->fetch_assoc()
+			$catagory->id = $row["id"];
+			$catagories->name = $row["name"];
+			$cata->parrent_id = $row["parrent_id"];
+		}
 		
 		return $catagory;
 	}

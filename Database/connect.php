@@ -11,12 +11,13 @@
 // Get connecting informations
 include("../config.php");
 
-$servername = DB_Name;
+$servername = DB_Server;
 $username = DB_User;
 $password = DB_Pass;
+$dbname = DB_Name;
 
 // Create connection
-$DB_Conn = new mysqli($servername, $username, $password);
+$DB_Conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($DB_Conn->connect_error) {
