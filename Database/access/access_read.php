@@ -121,7 +121,10 @@ class Read_ {
 	// Duc
 	static function Article($id) {
 		$article = new Article_();
-		
+		$sql = "SELECT id,catagory_id, title,content,status, writter_id FROM articles WHERE $id=$Article_Object->id ";
+		$result = $DB_Conn->query($sql);
+		$re=mysql_fetch_array($result);
+		$articles=$re[0];
 		return $article;
 	}
 	
@@ -129,7 +132,11 @@ class Read_ {
 	// 
 	static function Article_by_name($string) {
 		$articles = new array(); // Article_ array
-		
+		$sql = "SELECT id,catagory_id, title,content,status, writter_id FROM articles WHERE $Article_Object->title=$string ";
+		$result = $DB_Conn->query($sql);
+		 while($re=mysql_fetch_array($result)){
+		  $articles[] = $re[0];
+		 }
 		return $articles;
 	}
 	
@@ -137,7 +144,11 @@ class Read_ {
 	// 
 	static function Article_by_content($string) {
 		$articles = new array(); // Article_ array
-		
+		$sql = "SELECT id,catagory_id, title,content,status, writter_id FROM articles WHERE $Article_Object->content=$string ";
+		$result = $DB_Conn->query($sql);
+		 while($re=mysql_fetch_array($result)){
+		  $articles[] = $re[0];
+		 }
 		return $articles;
 	}
 	
@@ -145,6 +156,15 @@ class Read_ {
 	// Duy
 	static function Catagory($id) {
 		$catagory = new Catagory_();
+		$sql = "SELECT * FROM catagories;";
+		$result = $DB_Conn->query($sql);
+
+		if ($result->num_rows > 0) {
+			$row = $result->fetch_assoc()
+			$catagory->id = $row["id"];
+			$catagories->name = $row["name"];
+			$cata->parrent_id = $row["parrent_id"];
+		}
 		
 		return $catagory;
 	}

@@ -185,7 +185,17 @@ class Update_ {
 	// TODO: Update article to table
 	// Duc
 	private function Article_Update($Article_Object) {
-		
+		$sql = "UPDATE articles SET catagory_id=$Article_Object->catagory_id,
+									title=$Article_Object->title
+									content=$Article_Object->content
+									status=$Article_Object->status
+									writter_id=$Article_Object->writter_id WHERE id=$Article_Object->id";
+		if (mysqli_query($DB_Conn, $sql)) {
+		    echo "Record updated successfully";
+		} else {
+		    echo "Error updating record: " . mysqli_error($DB_Conn);
+		    return false;
+		}
 		return true; // True if success, False if not
 	}
 	
@@ -206,8 +216,13 @@ class Update_ {
 	// TODO: Update catagory to table
 	// Duy
 	private function Catagory_Update($Catagory_Object) {
+		$id = $Catagory_Object->id;
+		$name = $Catagory_Object->name;
+		$parrent_id = $Catagory_Object->parrent_id;
 		
-		return true; // True if success, False if not
+		$sql = "UPDATE catagories SET name='".$name."',parrent_id='".$parrent_id."' WHERE id='".$id."';"; // Query string
+		$result = $DB_Conn->query($sql);
+		return $result; // True if success, False if not
 	}
 	
 	// TODO: Update file to table
