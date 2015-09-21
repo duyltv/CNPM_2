@@ -139,8 +139,13 @@ class Update_ {
 	// TODO: Update catagory to table
 	// Duy
 	private function Catagory_Update($Catagory_Object) {
+		$id = $Catagory_Object->id;
+		$name = $Catagory_Object->name;
+		$parrent_id = $Catagory_Object->parrent_id;
 		
-		return true; // True if success, False if not
+		$sql = "UPDATE catagories SET name='".$name."',parrent_id='".$parrent_id."' WHERE id='".$id."';"; // Query string
+		$result = $DB_Conn->query($sql);
+		return $result; // True if success, False if not
 	}
 	
 	// TODO: Update file to table
