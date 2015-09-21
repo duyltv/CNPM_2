@@ -7,24 +7,26 @@
  -->
  
  
- <?php
-
+<?php
+if(!isset($DB_Conn)) {
+	require dirname(__FILE__) . DIRECTORY_SEPARATOR . 'access.php';
+}
 class Insert_ {
 	/*
 	 * Interface functions
 	 */
-	static function User($id,$name,$pass,$first_name,$last_name,$banned,$group,$meta) {
+	static function User($id,$name,$pass,$first_name,$last_name,$group,$meta) {
 		// Set arguments for object
 		$User_Object = new User_();
-		$User_Object->$id = $id;
-		$User_Object->$name = $name;
-		$User_Object->$pass = $pass;
-		$User_Object->$first_name = $first_name;
-		$User_Object->$last_name = $last_name;
-		$User_Object->$banned = $banned;
-		$User_Object->$group = $group;
-		$User_Object->$capabilities = '00000000000000000000111';
-		$User_Object->$meta = $meta;
+		$User_Object->id = $id;
+		$User_Object->name = $name;
+		$User_Object->pass = $pass;
+		$User_Object->first_name = $first_name;
+		$User_Object->last_name = $last_name;
+		$User_Object->banned = false;
+		$User_Object->group = $group;
+		$User_Object->capabilities = '00000000000000000000111';
+		$User_Object->meta = $meta;
 		
 		// Insert
 		return User_Insert($User_Object);
@@ -102,7 +104,14 @@ class Insert_ {
 	// TODO: Insert user to table
 	// Hai
 	private function User_Insert($User_Object) {
+		global $DB_Conn;
 		
+		$result = self::insert_users( $DB_Conn, $User_Object );
+		
+		$result	= self::insert_user_capability( $DB_Conn, $User_Object );
+
+		$result	= self::insert_user_meta( $DB_Conn, $User_Object );
+
 		return true; // True if success, False if not
 	}
 	
@@ -139,6 +148,55 @@ class Insert_ {
 	private function Files_Insert($Files_Object) {
 		
 		return true; // True if success, False if not
+	}
+
+	static function insert_users($DB_Conn, $User_Object) {
+		$id = !empty($User_Object->id) ? $User_Object->id : '';
+		$name = !empty($User_Object->name) ? $User_Object->name : '';
+		$pass = !empty($User_Object->pass) ? $User_Object->pass : '';
+		$group = !empty($User_Object->group) ? $User_Object->group : '';
+		$first_name = !empty($User_Object->first_name) ? $User_Object->first_name : '';
+		$last_name = !empty($User_Object->last_name) ? $User_Object->last_name : '';
+
+		$stmt = $DB_Conn->prepare("INSERT INTO `users` VALUES (?,?,?,?,?,?)");
+		$stmt->bind_param('ssssss',
+				   $id,
+				   $name,
+				   $pass,
+				   $group, 
+				   $first_name,
+				   $last_name);
+
+		return $stmt->execute();
+	}
+
+	static function insert_user_capability($DB_Conn, $User_Object) {
+		$id = !empty($User_Object->id) ? $User_Object->id : '';
+		
+		$capabilities = ($User_Object->capabilities);
+		
+		$stmt = $DB_Conn->prepare("INSERT INTO `user_capability` VALUES (?,?)");
+		$stmt->bind_param('ss',
+				   $id,
+				   $capabilities);
+
+		return $stmt->execute();	
+	}
+
+	static function insert_user_meta($DB_Conn, $User_Object) {
+		$data = $User_Object->meta;
+		$values = array();
+		foreach ($data as $k => $v) {
+			$values[] = sprintf("(%s,%s,%s)", $User_Object->id, $k, $v);
+		}
+
+		$values = implode(",", $values);
+
+		$stmt = $DB_Conn->prepare("INSERT INTO `user_meta` VALUES (?)");
+		$stmt->bind_param('s',
+				   $values);
+
+		return $stmt->execute();	
 	}
 }
 

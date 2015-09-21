@@ -57,11 +57,9 @@ create table capabilities(
 
 create table user_capability(
 	user_id			varchar(10)	NOT NULL,
-	capability_id	varchar(10)	NOT NULL,
+	capabilities	varchar(10)	NOT NULL,
 	
-	CONSTRAINT pk_UR PRIMARY KEY (user_id,capability_id),
-	FOREIGN KEY (user_id) REFERENCES users(id),
-	FOREIGN KEY (capability_id) REFERENCES capabilities(id)
+	FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 create table banned(
