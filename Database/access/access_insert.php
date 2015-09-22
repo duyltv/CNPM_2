@@ -13,7 +13,7 @@ if(!isset($DB_Conn)) {
 }
 class Insert_ {
 	/*
-	 * Interface functions
+	 * Interface functions 2222
 	 */
 	public function User($id,$name,$pass,$first_name,$last_name,$group,$meta) {
 		// Set arguments for object
