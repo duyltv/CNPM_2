@@ -96,19 +96,19 @@ class Read_ {
 	public function Crop($id) {
 		$crop = new Crop_();
 		
-		$sql = "SELECT id, crop_name, crop_title, crop_description, crop_catagory, crop_status, crop_author FROM crops WHERE id=.$id";
+		$sql = "SELECT id, crop_name, crop_title, crop_description, crop_catagory, crop_status, crop_author FROM crops WHERE id='$id'";
 		$result = $GLOBALS['DB_Conn']->query($sql);
 		
 		$row = mysql_fetch_row($result);
 		
-		$crop->$id = $row[0];
-		$crop->$crop_name = $row[1];
-		$crop->$crop_title = row[2];
-		$crop->$crop_description = $row[3];
-		$crop->$crop_category = $row[4];
-		$crop->$crop_status = $row[5];
-		$crop->$crop_author = $row[6];
-		$crop->$meta = $row[7];
+		$crop->id = $row[0];
+		$crop->crop_name = $row[1];
+		$crop->crop_title = row[2];
+		$crop->crop_description = $row[3];
+		$crop->crop_category = $row[4];
+		$crop->crop_status = $row[5];
+		$crop->crop_author = $row[6];
+		$crop->meta = $row[7];
 							
 		return $result; // True if success, False if not
 	}
@@ -126,20 +126,20 @@ class Read_ {
 			// output data of each row
 			while($row = $result->fetch_assoc()) 
 			{
-				$crop->$id = $row[0];
-				$crop->$crop_name = $row[1];
-				$crop->$crop_title = row[2];
-				$crop->$crop_description = $row[3];
-				$crop->$crop_category = $row[4];
-				$crop->$crop_status = $row[5];
-				$crop->$crop_author = $row[6];
-				$crop->$meta = $row[7];
+				$crop->id = $row[0];
+				$crop->crop_name = $row[1];
+				$crop->crop_title = row[2];
+				$crop->crop_description = $row[3];
+				$crop->crop_category = $row[4];
+				$crop->crop_status = $row[5];
+				$crop->crop_author = $row[6];
+				$crop->meta = $row[7];
 				
 			}
 		}
 		else 
 		{
-			echo "0 results";
+			return $crop;
 		}
 		return $result; 
 	}
@@ -154,10 +154,10 @@ class Read_ {
 		
 		$row = mysql_fetch_row($result);
 		
-		$crop_cat->$id = $row[0];
-		$crop_cat->$crop_category_name = $row[1];
-		$crop_cat->$crop_category_title = row[2];
-		$crop_cat->$crop_category_parent = $row[3];
+		$crop_cat->id = $row[0];
+		$crop_cat->crop_category_name = $row[1];
+		$crop_cat->crop_category_title = row[2];
+		$crop_cat->crop_category_parent = $row[3];
 		
 		return $result; // True if success, False if not
 	}
