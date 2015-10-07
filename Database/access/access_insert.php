@@ -13,7 +13,7 @@ if(!isset($DB_Conn)) {
 }
 class Insert_ {
 	/*
-	 * Interface functions
+	 * Interface functions 2222
 	 */
 	public function User($id,$name,$pass,$first_name,$last_name,$group,$meta) {
 		// Set arguments for object
@@ -127,9 +127,8 @@ class Insert_ {
 				$Article_Object->writter_id)";
 
 			if ($GLOBALS['DB_Conn']->query($sql1) === TRUE) {
-			    echo "New record created successfully";
+			   	return true;
 			} else {
-			    echo "Error: " . $sql1 . "<br>" . $DB_Conn->error;
 			    return false;
 			}
 		}
@@ -141,13 +140,13 @@ class Insert_ {
 	// Chau
 	public function Crop_Cat_Insert($Crop_Cat_Object) {
 		
-		$id = $Crop_Cat_Object->$id;
-		$crop_name = $Crop_Cat_Object->$crop_category_name;
-		$crop_title =  $Crop_Cat_Object->$crop_category_title;
-		$crop_category_parent = $Crop_Cat_Object->$crop_category_parent;
+		$id = $Crop_Cat_Object->id;
+		$crop_name = $Crop_Cat_Object->crop_category_name;
+		$crop_title =  $Crop_Cat_Object->crop_category_title;
+		$crop_category_parent = $Crop_Cat_Object->crop_category_parent;
 		
 		//check if insert data have the same id or not
-		$sql = "SELECT id FROM crop_catagories WHERE id=$Crop_Cat_Object->$id";
+		$sql = "SELECT id FROM crop_catagories WHERE id='$Crop_Cat_Object->id'";
 		$result = $GLOBALS['DB_Conn']->query($sql);
 		
 		if ($result->num_rows > 0) //if the id was in existence, return False
@@ -176,17 +175,17 @@ class Insert_ {
 	// Chau
 	public function Crop_Insert($Crop_Object) {
 		
-		$id = $Crop_Object->$id;
-		$crop_name = $Crop_Object->$crop_name;
-		$crop_title =  $Crop_Object->$crop_title;
-		$crop_description = $Crop_Object->$crop_description;
-		$crop_category = $Crop_Object->$crop_category;
-		$crop_status = $Crop_Object->$crop_status;
-		$crop_author = $Crop_Object->$crop_author;
-		$meta = $Crop_Object->$meta;
+		$id = $Crop_Object->id;
+		$crop_name = $Crop_Object->crop_name;
+		$crop_title =  $Crop_Object->crop_title;
+		$crop_description = $Crop_Object->crop_description;
+		$crop_category = $Crop_Object->crop_category;
+		$crop_status = $Crop_Object->crop_status;
+		$crop_author = $Crop_Object->crop_author;
+		$meta = $Crop_Object->meta;//?
 		
 		//check if insert data have the same id or not
-		$sql = "SELECT id FROM crops WHERE id=$Crop_Object->$id";
+		$sql = "SELECT id FROM crops WHERE id=$Crop_Object->id";
 		$result = $GLOBALS['DB_Conn']->query($sql);
 		
 		if ($result->num_rows > 0) //if the id was in existence, return False
