@@ -61,7 +61,7 @@
 	echo "</table>".PHP_EOL;
 	echo '<input type="submit" value="Update" /><br>'.PHP_EOL;
 	echo '</form>'.PHP_EOL;
-	if(isset($_POST['FileNum'])) echo '<font size="3" color="red"><b>Permissions changed!</b></font><br>';
+	if(isset($_POST['FileNum'])) echo '<font size="3" color="red"><b>Permission changed!</b></font><br>';
 	
 	# End html
 	echo "</html>";
