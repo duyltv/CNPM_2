@@ -1,3 +1,3 @@
 <?php
-include<"footer.html">;
+echo include<"footer.html">;
 ?>

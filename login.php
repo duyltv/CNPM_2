@@ -34,7 +34,7 @@
 			if ($rows == 1) {
 				$_SESSION['username']=$username;
 				//$_SESSION['roles']=Read_->;
-				header("location: index.php"); // Redirecting To Other Page
+				header("location: index.html"); // Redirecting To Other Page
 			} else {
 				//Error
 			}

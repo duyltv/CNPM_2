@@ -1,4 +1,4 @@
 <?php
 session_start(); // Starting Session
-include<"header.html">;
+echo include<"header.html">;
 ?>
