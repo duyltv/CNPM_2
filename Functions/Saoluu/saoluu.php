@@ -88,26 +88,30 @@
 		}
 	}
 	
+	function listFolderFiles($dir,$out,$count){
+		$ffs = scandir($dir);
+		foreach($ffs as $ff){
+			if($ff != '.' && $ff != '..'){
+				$out[] = $ff;
+				if($count<=80) {
+					echo '<script>';
+					echo 'progressBar('.$count.', $("#progressBar"));';
+					echo '</script>';
+			   }
+				if(is_dir($dir.'/'.$ff)) listFolderFiles($dir.'/'.$ff,$out,$count);
+			}
+		}
+	}
+	
 	# Function: List all files
 	function backup_file(){
 		$count = 0;
-		
-		# Variables
-		$filteredArray = array();
-
-		# Get files of root directory
 		$dir    = dirname(dirname(dirname(__FILE__)));
-		foreach (glob($dir."/*.*") as $filename) {
-			$filteredArray[] = $filename;
-			$count++;
-			if($count<=80) {
-				echo '<script>';
-				echo 'progressBar('.$count.', $("#progressBar"));';
-				echo '</script>';
-			}
-		}
+		$out = array();
+		listFolderFiles($dir,$out,$count)
 		
-		if(create_zip($filteredArray,'/var/www/html/backup'.time().'.zip') == true){
+		
+		if(create_zip($out,'/var/www/html/backup'.time().'.zip') == true){
 			echo '<script>';
 			echo 'progressBar(100, $("#progressBar"));';
 			echo '</script>';
