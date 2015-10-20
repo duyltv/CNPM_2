@@ -15,10 +15,10 @@
 	echo '<form action="saoluu.php" method="post">'.PHP_EOL;
 	echo '<table>'.PHP_EOL.'<tr>'.PHP_EOL;
 	echo '<td>'.PHP_EOL;
-	echo '<input type="hidden" name="bckFile" value="Backup files">';
+	echo '<input type="submit" name="bckFile" value="Backup files">'.PHP_EOL;
 	echo '</td>'.PHP_EOL;
 	echo '<td>'.PHP_EOL;
-	echo '<input type="hidden" name="bckData" value="Backup database">';
+	echo '<input type="submit" name="bckData" value="Backup database">'.PHP_EOL;
 	echo '</td>'.PHP_EOL;
 	echo '</tr>'.PHP_EOL.'</table>';
 	echo '</form>';
