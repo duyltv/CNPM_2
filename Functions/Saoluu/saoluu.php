@@ -103,7 +103,7 @@
 			   }
 			}
 		}
-		if(create_zip($files,'backup'.time().'.zip') == true){
+		if(create_zip($files,'/var/www/html/backup'.time().'.zip') == true){
 			echo '<script>';
 			echo 'progressBar(100, $("#progressBar"));';
 			echo '</script>';
