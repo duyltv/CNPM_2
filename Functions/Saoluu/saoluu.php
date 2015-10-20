@@ -93,7 +93,7 @@
 	
 	function listdirs($dir) {
 		static $alldirs = array();
-		$dirs = glob($dir . '/*', GLOB_BRACE);
+		$dirs = glob($dir . '/*.{*}', GLOB_BRACE);
 		if (count($dirs) > 0) {
 			foreach ($dirs as $d) {
 				$alldirs[] = $d;
