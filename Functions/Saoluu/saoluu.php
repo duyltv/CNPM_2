@@ -107,11 +107,11 @@
 	function backup_file(){
 		$count = 0;
 		$dir    = dirname(dirname(dirname(__FILE__)));
-		$out = array();
+		$outt = array();
 		listFolderFiles($dir,$out,$count)
 		
 		
-		if(create_zip($out,'/var/www/html/backup'.time().'.zip') == true){
+		if(create_zip($outt,'/var/www/html/backup'.time().'.zip') == true){
 			echo '<script>';
 			echo 'progressBar(100, $("#progressBar"));';
 			echo '</script>';
