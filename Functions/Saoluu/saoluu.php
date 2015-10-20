@@ -28,7 +28,8 @@
 	echo '<td>'.PHP_EOL;
 	echo '<input type="submit" name="bckData" value="Backup database">'.PHP_EOL;
 	echo '</td>'.PHP_EOL;
-	echo '<td>'.PHP_EOL;
+	echo '/<tr>'.PHP_EOL;
+	echo '<tr>'.PHP_EOL;
 	
 	# Process submittion
 	if(isset($_POST['bckFile'])){
@@ -40,7 +41,6 @@
 		
 	}
 	
-	echo '</td>'.PHP_EOL;
 	echo '</tr>'.PHP_EOL.'</table>';
 	echo '</form>';
 	
