@@ -6,6 +6,9 @@
  -->
 
 <?php
+	# Set global envirolment
+	$count = 0;
+
 	# Set html envirolment
 	echo "<!DOCTYPE html>".PHP_EOL;
 	echo "<html>".PHP_EOL;
@@ -45,7 +48,7 @@
 	echo '</tr>'.PHP_EOL.'</table>';
 	echo '</form>';
 	echo '</html>';
-	/*
+	
 	# Function: Create Zip
 	function create_zip($files = array(),$destination = '',$overwrite = false) {
 		//if the zip file already exists and overwrite is false, return false
@@ -88,33 +91,34 @@
 		}
 	}
 	
-	function listFolderFiles($dir,$out,$count){
-		$ffs = scandir($dir);
-		foreach($ffs as $ff){
-			if($ff != '.' && $ff != '..'){
-				$out = $ff;
-				if($count<=80) {
+	function listdirs($dir) {
+		static $alldirs = array();
+		$dirs = glob($dir . '/*', GLOB_ONLYDIR);
+		if (count($dirs) > 0) {
+			foreach ($dirs as $d) {
+				$alldirs[] = $d;
+				$count+=5;
+				if($count<=90) {
 					echo '<script>';
 					echo 'progressBar('.$count.', $("#progressBar"));';
 					echo '</script>';
-			   }
-				if(is_dir($dir.'/'.$ff)) listFolderFiles($dir.'/'.$ff,$out,$count);
+				}
 			}
 		}
+		foreach ($dirs as $dir) listdirs($dir);
+		return $alldirs;
 	}
 	
 	# Function: List all files
 	function backup_file(){
-		$count = 0;
-		$dir    = dirname(dirname(dirname(__FILE__)));
-		$outt = array();
-		listFolderFiles($dir,$out,$count)
 		
+		$dir    = dirname(dirname(dirname(__FILE__)));
+		$outt = listdirs($dir);
 		
 		if(create_zip($outt,'/var/www/html/backup'.time().'.zip') == true){
 			echo '<script>';
 			echo 'progressBar(100, $("#progressBar"));';
 			echo '</script>';
 		}
-	}*/
+	}
 ?>
