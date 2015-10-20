@@ -92,7 +92,7 @@
 		$ffs = scandir($dir);
 		foreach($ffs as $ff){
 			if($ff != '.' && $ff != '..'){
-				$out[] = $ff;
+				$out = $ff;
 				if($count<=80) {
 					echo '<script>';
 					echo 'progressBar('.$count.', $("#progressBar"));';
