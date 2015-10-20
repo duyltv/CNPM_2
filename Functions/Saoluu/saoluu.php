@@ -93,15 +93,17 @@
 	
 	function listdirs($dir) {
 		static $alldirs = array();
-		$dirs = glob($dir . '/*.{*}', GLOB_BRACE);
+		$dirs = glob($dir . '/*', GLOB_BRACE);
 		if (count($dirs) > 0) {
 			foreach ($dirs as $d) {
-				$alldirs[] = $d;
-				if($count<=90) {
-					$count+=5;
-					echo '<script>';
-					echo 'progressBar('.$count.', $("#progressBar"));';
-					echo '</script>';
+				if (strpos($d, '.') == false){
+					$alldirs[] = $d;
+					if($count<=90) {
+						$count+=5;
+						echo '<script>';
+						echo 'progressBar('.$count.', $("#progressBar"));';
+						echo '</script>';
+					}
 				}
 			}
 		}
