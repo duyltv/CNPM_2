@@ -96,7 +96,7 @@
 		$dirs = glob($dir . '/*', GLOB_BRACE);
 		if (count($dirs) > 0) {
 			foreach ($dirs as $d) {
-				if (strpos($d, '.') == false){
+				if (strpos($d, '.') !== false){
 					$alldirs[] = $d;
 					if($count<=90) {
 						$count+=5;
