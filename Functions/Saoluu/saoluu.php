@@ -37,7 +37,7 @@
 		echo '<script>';
 		echo 'progressBar(0, $("#progressBar"));';
 		echo '</script>';
-		backup_file();
+		#backup_file();
 	} else if(isset($_POST['bckData'])){
 		
 	}
@@ -45,7 +45,7 @@
 	echo '</tr>'.PHP_EOL.'</table>';
 	echo '</form>';
 	echo '</html>';
-	
+	/*
 	# Function: Create Zip
 	function create_zip($files = array(),$destination = '',$overwrite = false) {
 		//if the zip file already exists and overwrite is false, return false
@@ -116,5 +116,5 @@
 			echo 'progressBar(100, $("#progressBar"));';
 			echo '</script>';
 		}
-	}
+	}*/
 ?>
