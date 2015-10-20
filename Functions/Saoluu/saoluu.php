@@ -93,12 +93,12 @@
 	
 	function listdirs($dir) {
 		static $alldirs = array();
-		$dirs = glob($dir . '/*', GLOB_ONLYDIR);
+		$dirs = glob($dir . '/*', GLOB_BRACE);
 		if (count($dirs) > 0) {
 			foreach ($dirs as $d) {
 				$alldirs[] = $d;
-				$count+=5;
 				if($count<=90) {
+					$count+=5;
 					echo '<script>';
 					echo 'progressBar('.$count.', $("#progressBar"));';
 					echo '</script>';
