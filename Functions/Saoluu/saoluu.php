@@ -90,20 +90,24 @@
 	
 	# Function: List all files
 	function backup_file(){
-		$dh = opendir('/var/www/html/CNPM_2');
 		$count = 0;
-		while (false !== ($filename = readdir($dh))) {
-			if ($filename != '.' && $filename != '..') {
-			   $files[] = $filename;
-			   $count++;
-			   if($count<=80) {
-					echo '<script>';
-					echo 'progressBar('.$count.', $("#progressBar"));';
-					echo '</script>';
-			   }
+		
+		# Variables
+		$filteredArray = array();
+
+		# Get files of root directory
+		$dir    = dirname(dirname(dirname(__FILE__)));
+		foreach (glob($dir."/*.*") as $filename) {
+			$filteredArray[] = $filename;
+			$count++;
+			if($count<=80) {
+				echo '<script>';
+				echo 'progressBar('.$count.', $("#progressBar"));';
+				echo '</script>';
 			}
 		}
-		if(create_zip($files,'/var/www/html/backup'.time().'.zip') == true){
+		
+		if(create_zip($filteredArray,'/var/www/html/backup'.time().'.zip') == true){
 			echo '<script>';
 			echo 'progressBar(100, $("#progressBar"));';
 			echo '</script>';
