@@ -40,7 +40,7 @@
 		echo '<script>';
 		echo 'progressBar(0, $("#progressBar"));';
 		echo '</script>';
-		#backup_file();
+		backup_file();
 	} else if(isset($_POST['bckData'])){
 		
 	}
